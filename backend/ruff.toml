@@ -1,0 +1,37 @@
+# ruff.toml
+
+# General settings
+line-length = 80  # Google recommends a maximum line length of 80 characters
+indent-width = 4  # Standard indentation width
+
+# Linting rules
+[lint]
+select = [
+    "E",    # Pycodestyle errors
+    "F",    # Pyflakes
+    "I",    # Import conventions
+    "D",    # Docstring conventions
+    "N",    # PEP 8 naming conventions
+    "UP",   # Pyupgrade
+    "Q",    # Quotes
+    "COM",  # Commas
+    "SIM",  # Simplifications
+    "ARG",  # Argument issues
+    "RET",  # Return statements
+    "B",    # Bugbear
+    "C4",   # McCabe complexity
+]
+
+# Docstring conventions
+[lint.pydocstyle]
+convention = "google"  # Enforce Google-style docstrings
+
+# Import conventions
+[lint.flake8-import-conventions]
+banned-from = []  # Specify any banned imports if necessary
+
+# Quote style
+[format]
+quote-style = "double"  # Google style prefers double quotes for strings
+
+# Additional settings
