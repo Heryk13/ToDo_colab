@@ -26,4 +26,6 @@ Utilizando Python, Uv, Ruff, fastapi
 cd backend
 uv run --directory src  fastapi dev
 ```
-ir para pasta backend e rodar o programa
+> [!NOTE]  
+> ir para pasta backend e rodar o programa
+
