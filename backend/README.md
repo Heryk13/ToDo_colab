@@ -8,17 +8,22 @@ Utilizando Python, Uv, Ruff, fastapi
 * fastapi - framework para estruturação de API
 
 ## Como instalar e iniciar o UV
+> [!NOTE]  
+> apenas para inicio de projeto  
 
-1. execute o codigo no cmd do powershell: powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex" 
-2. uv self update - parar verificar se uv está atualizado
-3. uv init backend - para criar o projeto com uv
+1. [link da instalação](https://docs.astral.sh/uv/getting-started/installation/)
+1. `uv self update` parar verificar se uv está atualizado
+1. `uv init backend` para criar o projeto com uv  
+
 
 ## Como rodar o Ruff
 
-1. uvx ruff check - para verificar os erros de codigo
-2. uvx ruff check --fix - para consertar automaticamente estes erros
+1. `uvx ruff check` para verificar os erros de codigo
+1. `uvx ruff check --fix` para consertar automaticamente estes erros
 
 ## Como rodar fastapi
-1. cd backend - ir para pasta "backend"
-2. uv add fastapi[standard] - para adicionar o fastapi
-3 uv run --directory src  fastapi dev - para rodar o programa
+```shell
+cd backend
+uv run --directory src  fastapi dev
+```
+ir para pasta backend e rodar o programa
