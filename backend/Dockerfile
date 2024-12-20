@@ -14,4 +14,4 @@ COPY pyproject.toml .
 
 RUN uv sync
 
-CMD ["uv", "run", "--directory", "src", "fastapi", "dev"]
+CMD ["uv", "run", "--directory", "src", "fastapi", "dev", "--host", "0.0.0.0"]

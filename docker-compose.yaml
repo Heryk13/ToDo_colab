@@ -1,0 +1,15 @@
+services:
+  api:
+    container_name: api
+    build:
+      context: backend
+    ports:
+      - 8000:8000
+    volumes:
+      - ./backend/src:/src
+  web:
+    container_name: web
+    build:
+      context: frontend
+    ports:
+      - 3000:3000
