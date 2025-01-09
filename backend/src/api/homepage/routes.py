@@ -2,14 +2,14 @@ from datetime import datetime
 
 from fastapi import APIRouter
 
-from api.homepage.schemas import response_list
+from api.homepage.schemas import ResponseList
 
 router = APIRouter()
 
 @router.get("/list_task")
-def list_task() ->list[response_list] :
+def list_task() ->list[ResponseList] :
     """
-    
+
     """
     date_time = datetime.now()
     return[
@@ -25,3 +25,10 @@ def list_task() ->list[response_list] :
         "description": "grupo do projeto yyyyyy",
         },
     ]
+
+def create_task():
+    """
+    """
+    return{
+        "message" : "hello world"
+    }
