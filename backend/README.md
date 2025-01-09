@@ -29,3 +29,6 @@ uv run --directory src  fastapi dev
 > [!NOTE]  
 > ir para pasta backend e rodar o programa
 
+## como instalar bibliotecas
+uv add xxx (ex: uv add sqlmodel)
+ 

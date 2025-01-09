@@ -1,10 +1,11 @@
-"""Teste."""
-
 from fastapi import FastAPI
 
-app = FastAPI()
+from api import api_router
 
+app = FastAPI()
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
+
+app.include_router(api_router)

@@ -12,6 +12,6 @@ COPY src src
 
 COPY pyproject.toml .
 
-RUN uv sync
+RUN uv sync --no-install-project
 
 CMD ["uv", "run", "--directory", "src", "fastapi", "dev", "--host", "0.0.0.0"]
