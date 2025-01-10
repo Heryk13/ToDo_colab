@@ -4,14 +4,37 @@ from sqlmodel import SQLModel
 
 
 class ResponseList(SQLModel):
-    """tipagem de cada chave na lista!"""
+    """Define a tipagem e estrutura de cada chave na lista.
+
+    Attributes:
+        date (datetime): Tempo associado com a resposta.
+        title (str): Titulo da resposta
+        description (str): Descrição da resposta
+    """
     date: datetime
     title: str
     description: str
 
 class CreateList(SQLModel):
-    """tipagem!"""
+    """Define a tipagem e estrutura de cada chave na lista.
+
+    Attributes:
+        date (datetime): Tempo associado com a resposta.
+        title (str): Titulo da resposta
+        description (str): Descrição da resposta
+    """
     date: datetime
+    title: str
+    description: str
+
 class DeleteList(SQLModel):
-    """tipagem!"""
+    """Define a tipagem e estrutura de cada chave na lista.
+
+    Attributes:
+        date (datetime): Tempo associado com a resposta.
+        title (str): Titulo da resposta
+        description (str): Descrição da resposta
+    """
     date: datetime
+    title: str
+    description: str
