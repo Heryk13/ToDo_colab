@@ -1,3 +1,5 @@
+"""Python identificar que é uma biblioteca."""
+
 from fastapi import APIRouter
 
 from api.homepage.routes import router

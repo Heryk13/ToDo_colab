@@ -1,3 +1,5 @@
+"""Rota raiz da aplicação."""
+
 from fastapi import FastAPI
 
 from api import api_router

@@ -1,3 +1,5 @@
+"""Rotas de cada aplicação."""
+
 from datetime import datetime
 
 from fastapi import APIRouter

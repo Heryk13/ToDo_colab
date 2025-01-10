@@ -1,3 +1,5 @@
+"""Esquema de tipagem para as listas."""
+
 from datetime import datetime
 
 from sqlmodel import SQLModel
