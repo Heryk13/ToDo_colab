@@ -11,7 +11,7 @@ type ListTaskRes = {
 const formatDate = (date: string): string => {
   const dateObj = new Date(date)
   return `${dateObj.getFullYear()}/${String(dateObj.getMonth() + 1).padStart(2, '0')}/${String(dateObj.getDate()).padStart(2, '0')} ${String(
-    dateObj.getHours()
+    dateObj.getHours(),
   ).padStart(2, '0')}:${String(dateObj.getMinutes()).padStart(2, '0')}`
 }
 
@@ -66,7 +66,7 @@ export default async function Home() {
               />
             ))
           ) : (
-            <p className="text-gray-500 text-center">No tasks available.</p>
+            <p className="text-center text-gray-500">No tasks available.</p>
           )}
         </CardContent>
       </Card>
