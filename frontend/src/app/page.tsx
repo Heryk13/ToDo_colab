@@ -2,51 +2,50 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { FaPlus, FaRegTrashAlt } from 'react-icons/fa'
 
-type CardItemProps = {
-  index: number
+type ListTaskRes = {
   date: string
   title: string
   description: string
 }
 
-const CardItem: React.FC<CardItemProps> = ({
-  index,
-  date,
-  title,
-  description,
-}) => {
-  return (
-    <Card className="mt-3 w-full" key={index}>
-      <CardContent className="py-3">
-        <div className="flex justify-between">
-          <div>
-            <p>{date}</p>
-            <h1 className="text-lg font-bold">{title}</h1>
-            <p>{description}</p>
-          </div>
-          <div className="mt-3 flex items-center justify-end sm:mt-0 sm:justify-center">
-            <FaRegTrashAlt size={30} className="text-red-500" />
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  )
+const formatDate = (date: string): string => {
+  const dateObj = new Date(date)
+  return `${dateObj.getFullYear()}/${String(dateObj.getMonth() + 1).padStart(2, '0')}/${String(dateObj.getDate()).padStart(2, '0')} ${String(
+    dateObj.getHours()
+  ).padStart(2, '0')}:${String(dateObj.getMinutes()).padStart(2, '0')}`
 }
 
-export default function Home() {
-  // Example data array for dynamic rendering
-  const cardMockData = [
-    {
-      date: '2024/12/12',
-      title: 'Grupo de amigos',
-      description: 'grupo do projeto xxxxxx',
-    },
-    {
-      date: '2024/12/13',
-      title: 'Projeto Y',
-      description: 'grupo do projeto yyyyyy',
-    },
-  ]
+const CardItem: React.FC<ListTaskRes> = ({ date, title, description }) => (
+  <Card className="mt-3 w-full">
+    <CardContent className="py-3">
+      <div className="flex justify-between">
+        <div>
+          <p>{formatDate(date)}</p>
+          <h1 className="text-lg font-bold">{title}</h1>
+          <p>{description}</p>
+        </div>
+        <div className="mt-3 flex items-center justify-end sm:mt-0 sm:justify-center">
+          <FaRegTrashAlt size={30} className="text-red-500" />
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+)
+
+async function fetchTasks(): Promise<ListTaskRes[]> {
+  const taskListUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL_SSR}/api/list_task`
+
+  const response = await fetch(taskListUrl, { cache: 'no-store' }) // Disable caching if data is dynamic
+  if (!response.ok) {
+    console.error('Failed to fetch tasks:', response.statusText)
+    return []
+  }
+
+  return response.json()
+}
+
+export default async function Home() {
+  const tasks = await fetchTasks()
 
   return (
     <div className="min-h-screen w-full bg-gray-100 p-4">
@@ -57,15 +56,18 @@ export default function Home() {
 
       <Card className="mx-auto mt-5 w-full max-w-md sm:max-w-lg lg:max-w-xl">
         <CardContent>
-          {cardMockData.map((card, index) => (
-            <CardItem
-              key={index}
-              index={index}
-              date={card.date}
-              title={card.title}
-              description={card.description}
-            />
-          ))}
+          {tasks.length > 0 ? (
+            tasks.map((task, index) => (
+              <CardItem
+                key={`${task.title}-${index}`}
+                date={task.date}
+                title={task.title}
+                description={task.description}
+              />
+            ))
+          ) : (
+            <p className="text-gray-500 text-center">No tasks available.</p>
+          )}
         </CardContent>
       </Card>
 
