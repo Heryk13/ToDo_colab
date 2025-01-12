@@ -29,6 +29,7 @@ class CreateList(SQLModel):
     title: str
     description: str
 
+
 class DeleteList(SQLModel):
     """Define a tipagem e estrutura de cada chave na lista.
 
